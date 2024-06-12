@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de casamneto
+    </title>
+    
+</head>
+<style>body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+h1 {
+    font-size: 2em;
+    color: #ff6f61;
+}
+
+.buttons {
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaço entre os botões */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#yesButton {
+    background: #ff6f61;
+    color: white;
+}
+
+#yesButton:hover {
+    background: #e65c55;
+}
+
+#noButton {
+    background: #f4a261;
+    color: white;
+    position: absolute;
+    transition: transform 0.2s ease; /* Adiciona uma transição suave */
+    left: 0; /* Garante que o botão "Não" comece na posição inicial */
+    top: 0; /* Garante que o botão "Não" comece na posição inicial */
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #ff6f61;
+    opacity: 0; /* Inicialmente escondido */
+    transition: opacity 1s ease; /* Animação de fade-in */
+}
+</style>
+<body>
+    <div class="container">
+        <h1>Quer casar comigo?</h1>
+        <div class="buttons">
+            <button id="yesButton">Sim</button>
+            <button id="noButton">Não</button>
+        </div>
+        <div id="message" class="message">me ama muito, nao e possivel
+        </div>
+    </div>
+    <script>const noButton = document.getElementById('noButton');
+        const yesButton = document.getElementById('yesButton');
+        const message = document.getElementById('message');
+        
+        function moveButton() {
+            const containerRect = document.querySelector('.container').getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+        
+            const offset = 50; // Define a distância máxima de movimento
+        
+            // Calcula uma nova posição dentro dos limites do contêiner
+            const maxX = containerRect.width - buttonRect.width - offset;
+            const maxY = containerRect.height - buttonRect.height - offset;
+            const x = Math.random() * maxX - (maxX / 2);
+            const y = Math.random() * maxY - (maxY / 2);
+        
+            noButton.style.transform = `translate(${x}px, ${y}px)`;
+        }
+        
+        function showMessage() {
+            message.style.opacity = '1'; // Mostra a mensagem com efeito de fade-in
+        }
+        
+        noButton.addEventListener('mouseover', moveButton);
+        yesButton.addEventListener('click', showMessage);</script>
+</body>
+</html>
+
+</html>
